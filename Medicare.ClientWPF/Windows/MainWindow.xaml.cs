@@ -170,6 +170,7 @@ namespace Medicare.ClientWPF.Windows
                 var entities = await _context.Appointments
                     .AsNoTracking()
                     .Include(appointment => appointment.Patient)
+                    .Include(appointment => appointment.Doctor)
                     .Where(appointment =>
                         appointment.Doctor.Id == DoctorProfile.Profile.Id
                         && (string.IsNullOrWhiteSpace(modelDto.PatientFullName)

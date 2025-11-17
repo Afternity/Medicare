@@ -4,9 +4,7 @@ using Medicare.ClientWPF.Profile;
 using Medicare.Domain.Data.DbContexts;
 using Medicare.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Controls;
 
 
