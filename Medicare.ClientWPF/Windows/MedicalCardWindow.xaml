@@ -1,0 +1,93 @@
+﻿<Window x:Class="Medicare.ClientWPF.Windows.MedicalCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medicare.ClientWPF.Windows"
+        mc:Ignorable="d"
+        Title="Медицинская карта" Height="550" Width="1000"
+        Loaded="Window_Loaded">
+
+    <Grid Background="#debef5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Назад" Grid.Row="0" Grid.Column="2" Margin="5" Width="50" HorizontalAlignment="Right" Click="Back_Click"/>
+
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+
+            <TextBlock Text="Id:" Margin="5"/>
+            <TextBlock x:Name="MedicalCardIdTextBlock" Margin="5"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+
+            <TextBlock Text="Имя:" Margin="5"/>
+            <TextBlock x:Name="PatientFullNameTextBlock" Margin="5"/>
+
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="70" HorizontalAlignment="Center"
+                 Background="LightGray" SelectionChanged="ListBox_SelectionChanged"
+                 x:Name="ListBoxUI">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock Text="История:" Margin="5"/>
+                        <TextBlock Text="{Binding MedicalHistory}" FontWeight="Bold" TextWrapping="Wrap" Width="180" Margin="5"/>
+
+                        <TextBlock Text="Аллергии:" Margin="5"/>
+                        <TextBlock Text="{Binding Allergies}" FontWeight="Bold" TextWrapping="Wrap" Width="100" Margin="5"/>
+
+                        <TextBlock Text="Актуальное лечение:" Margin="5"/>
+                        <TextBlock Text="{Binding CurrentMedications}" FontWeight="Bold" TextWrapping="Wrap" Width="180" Margin="5"/>
+
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0">
+
+            <TextBlock Text="История:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="MedicalCardMedicalHistoryTextBlock" TextWrapping="Wrap" Height="350"  Margin="5"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+
+            <TextBlock Text="Аллергии и непереносимости:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="MedicalCardAllergiesTextBlock" TextWrapping="Wrap" Height="350" Margin="5"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
+
+            <TextBlock Text="Актуальное лечение:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="MedicalCardCurrentMedicationsTextBlock" TextWrapping="Wrap" Height="350" Margin="5"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Orientation="Horizontal">
+
+            <Button Click="MedicalCardUpdate_Click" Content="Обновить" Width="150" Margin="5"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

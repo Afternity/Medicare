@@ -1,0 +1,103 @@
+﻿<Window x:Class="Medicare.ClientWPF.Windows.RecipeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medicare.ClientWPF.Windows"
+        mc:Ignorable="d"
+          Title="Рецепты" Height="550" Width="1000"
+        Loaded="Window_Loaded">
+
+    <Grid Background="#debef5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Назад" Grid.Row="0" Grid.Column="2" Margin="5" Width="50" 
+                HorizontalAlignment="Right" Click="Back_Click"/>
+
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Id:" Margin="5"/>
+            <TextBlock x:Name="RecipeIdTextBlock" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Пациент:" Margin="5"/>
+            <TextBlock x:Name="PatientFullNameTextBlock" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" Orientation="Horizontal">
+            <TextBlock Text="Дата выписки:" Margin="5"/>
+            <TextBlock x:Name="IssueDateTextBlock" Margin="5"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="200" 
+         HorizontalAlignment="Center" Background="LightGray" 
+         SelectionChanged="ListBox_SelectionChanged" x:Name="ListBoxUI">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Лекарство:" Margin="5"/>
+                        <TextBlock Text="{Binding Medication}" FontWeight="Bold" 
+                           TextWrapping="Wrap" Width="120" Margin="5"/>
+                        <TextBlock Text="Дозировка:" Margin="5"/>
+                        <TextBlock Text="{Binding Dosage}" FontWeight="Bold" 
+                           TextWrapping="Wrap" Width="70" Margin="5"/>
+                        <TextBlock Text="Длительность:" Margin="5"/>
+                        <TextBlock Text="{Binding DurationDays}" FontWeight="Bold" 
+                           TextWrapping="Wrap" Width="70" Margin="5"/>
+                        <TextBlock Text="Врач:" Margin="5"/>
+                        <TextBlock Text="{Binding Doctor.FullName}" FontWeight="Bold" 
+                           TextWrapping="Wrap" Width="120" Margin="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0">
+            <TextBlock Text="Название лекарства:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="RecipeMedicationTextBox" TextWrapping="Wrap" 
+                     Height="100" Margin="5"/>
+
+            <TextBlock Text="Длительность приема (дни):" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="RecipeDurationDaysTextBox" TextWrapping="Wrap" 
+                     Height="50" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+            <TextBlock Text="Дозировка:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="RecipeDosageTextBox" TextWrapping="Wrap" 
+                     Height="100" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
+            <TextBlock Text="Инструкции по применению:" HorizontalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="RecipeInstructionsTextBox" TextWrapping="Wrap" 
+                     Height="200" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" 
+                    HorizontalAlignment="Center" Orientation="Horizontal">
+
+            <Button Click="RecipeAdd_Click" Content="Добавить" Width="150" Margin="5"/>
+            
+            <Button Click="RecipeUpdate_Click" Content="Обновить" 
+                    Width="150" Margin="5"/>
+
+            <Button Click="RecipeDelete_Click" Content="Удалить" Width="150" Margin="5"/>
+
+            <Button Click="GetAll_Click" Content="Обновить список" Width="150" Margin="5"/>
+
+        </StackPanel>
+    </Grid>
+    
+</Window>
