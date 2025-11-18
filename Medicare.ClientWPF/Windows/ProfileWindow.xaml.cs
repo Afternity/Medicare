@@ -115,5 +115,17 @@ namespace Medicare.ClientWPF.Windows
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AuthWindow();
+            window.Show();
+
+            foreach (var otherWindow in Application.Current.Windows.OfType<Window>().ToList())
+            {
+                if (otherWindow is not AuthWindow)
+                    otherWindow.Close();
+            }
+        }
     }
 }

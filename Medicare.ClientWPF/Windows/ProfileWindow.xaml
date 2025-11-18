@@ -7,14 +7,19 @@
         mc:Ignorable="d"
           Title="Профиль врача" Height="350" Width="400"
         Loaded="Window_Loaded">
-    
+
     <Grid Background="#debef5">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Content="Назад" Grid.Row="0" Margin="5" Width="50" HorizontalAlignment="Right" Click="Back_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+            <Button Content="Выход" Grid.Row="0" Margin="5" Width="50" Click="Exit_Click"/>
+            <Button Content="Назад" Grid.Row="0" Margin="5" Width="50" Click="Back_Click"/>
+
+        </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="10"  Width="150">
 

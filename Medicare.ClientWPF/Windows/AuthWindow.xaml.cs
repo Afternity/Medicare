@@ -36,14 +36,10 @@ namespace Medicare.ClientWPF.Windows
             passworkTextBlock.Text = _password;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _login = loginTextBlock.Text;
             _password = passworkTextBlock.Text;
-
-            await AuthAsync(
-                _login,
-                _password);
         }
 
         private async void Auth_Click(object sender, RoutedEventArgs e)
